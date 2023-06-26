@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "streamlined docker compose"
+title:  "better docker compose"
 date:   2023-06-26 17:01:57 +0000
 categories: docker
 ---
