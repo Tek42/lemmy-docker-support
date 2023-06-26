@@ -8,7 +8,11 @@ I find the docker compose provided by the Lemmy devs to be overly complicated. I
 
 If you want to use something other than NPM (Caddy, Traefik, Nginx, etc) you can just omit the section for 'nginxproxymanager' and insert your own reverse proxy preference.
 
-This simplified compose removes the necessity to have separate networks and only requires you to expose the port(s) of your reverse proxy of choice. All other network communication between containers in this compose is done internally on the default network that is automaticall created when you do 'docker compose up -d'.
+This simplified compose removes the necessity to have separate networks and only requires you to expose the port(s) of your reverse proxy of choice. All other network communication between containers in this compose is done internally on the default network that is automatically created when you do 'docker compose up -d'.
+
+You only need to reverse proxy to the lemmy_ui on port 1234 and to lemmy on port 8536 for /.well-known, /feeds, /pictrs, and /api
+
+This is done in different ways depending on which product you use for a reverse proxy. [I wrote a short guide for NPM]({% post_url 2023-06-26-proxy-npm-setup %}), you are on your own if you use a different product.
 
 It should be noted that the logging is reduced to only log on ERROR instead of the default setting with is WARN. You may want to change those back to WARN temporarily if you are having troubles and can't figure out what's going wrong. I also have made settings in my systems overall Docker logging to reduce log storage in general for ALL containers. This is done in /etc/docker/daemon.json if you want more information on how to do that I will be writing another article later.
 
