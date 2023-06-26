@@ -4,7 +4,9 @@ title:  "Better docker compose"
 date:   2023-06-26 17:01:57 +0000
 categories: docker
 ---
-I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your own reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmy install with easy automation of SSL certs.
+I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your own reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmy install with easy automation of SSL certs. 
+
+Also note that I have intentionally removed postfix from the docker-compose.yml as I believe that it's a bad idea for people to be running postfix on home servers and/or VPS's. You will almost certainly have most/all of your outgoing mail rejected by recipient servers. I recommend using one of the many mail services such as sendgrid, mailgun, postmark, etc. If you feel differently, feel free to do it your way.
 
 If you want to use something other than NPM (Caddy, Traefik, Nginx, etc) you can just omit the section for 'nginxproxymanager' and insert your own reverse proxy preference.
 
@@ -20,7 +22,7 @@ If you use the file provided by the Lemmy devs you will need to edit that file t
 
 You may want to edit/change the pict-rs settings to better suit your needs. There are also adiitional Postgres settings you can make to optimize your database. Both are more advanced settings and are outside the scope of this document.
 
-!!!! Please note that I am pulling Lemmy version 0.18 (dessalines/lemmy:0.18 and dessalines/lemmy-ui:0.18) and pict-rs 0.4.0-rc.7 (asonix/pictrs:0.4.0-rc.7) in this example docker-compose.yml. You may want to change those version tags to whatever version you intend to run for your instance. When Lemmy is upgraded in the future you will need to shut down your stack (docker compose down), edit your docker-compose.yml and increment the version to match the version tag to match the newer version you want to run. Version tags can be viewed on the [LEMMY DOCKERHUB PAGE](https://hub.docker.com/r/dessalines/lemmy/tags){:target="_blank"}. pict-rs can also be upgraded at your discretion, their version tags can be viewed on the [PICT-RS DOCKERHUB PAGE](https://hub.docker.com/r/asonix/pictrs/tags){:target="_blank"} !!!!
+!!!! Please note that I am pulling Lemmy version 0.18 (dessalines/lemmy:0.18 and dessalines/lemmy-ui:0.18) and pict-rs 0.4.0-rc.7 (asonix/pictrs:0.4.0-rc.7) in this example docker-compose.yml. You may want to change those version tags to whatever version you intend to run for your instance. When Lemmy is upgraded in the future, you will need to edit your docker-compose.yml, increment the versions to match the newer version you want to run, and then run docker-compose up -d to automatically pull the newer images and restart the necessary containers. Version tags can be viewed on the [LEMMY DOCKERHUB PAGE](https://hub.docker.com/r/dessalines/lemmy/tags){:target="_blank"}. pict-rs can also be upgraded at your discretion, their version tags can be viewed on the [PICT-RS DOCKERHUB PAGE](https://hub.docker.com/r/asonix/pictrs/tags){:target="_blank"} !!!!
 
 
 {% highlight ruby %}
