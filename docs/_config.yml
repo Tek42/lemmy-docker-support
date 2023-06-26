@@ -36,7 +36,7 @@ github_username:  tek42
 theme: minima
 plugins:
   - jekyll-feed
-
+  - jekyll-target-blank
 markdown: redcarpet
 extensions: [fenced_code_blocks]
 
