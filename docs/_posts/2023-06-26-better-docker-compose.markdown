@@ -1,0 +1,90 @@
+---
+layout: post
+title:  "Better docker compose"
+date:   2023-06-26 17:01:57 +0000
+categories: docker
+---
+I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your own reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmmy install.
+
+If you want to use something other than NPM (Caddy, Traefik, Nginx, etc) you can just omit the section for 'nginxproxymanager' and insert your own reverse proxy preference.
+
+This simplified compose removes the necessity to have separate networks and only requires you to expose the port(s) of your reverse proxy of choice. All other network communication between containers in this compose is done internally on the default network that is automaticall created when you do 'docker compose up -d'.
+
+It should be noted that the logging is reduced to only log on ERROR instead of the default setting with is WARN. You may want to change those back to WARN temporarily if you are having troubles and can't figure out what's going wrong. I also have made settings in my systems overall Docker logging to reduce log storage in general for ALL containers. This is done in /etc/docker/daemon.json if you want more information on how to do that I will be writing another article later.
+
+{% highlight ruby %}
+version: "3.3"
+services:
+  nginxproxymanager:
+   container_name: nginxproxymanager
+   image: 'jc21/nginx-proxy-manager:latest'
+   restart: always
+   ports:
+     - '80:80'
+     - '81:81'
+     - '443:443'
+   volumes:
+     - ./nginxproxymanager/data:/data
+     - ./nginxproxymanager/letsencrypt:/etc/letsencrypt
+     - ./nginxproxymanager/logs:/data/logs
+
+  lemmy:
+    image: dessalines/lemmy:latest
+    container_name: lemmy
+    hostname: lemmy
+    restart: always
+    environment:
+      - RUST_LOG="error,lemmy_server=error,lemmy_api=error,lemmy_api_common=error,lemmy_api_crud=error,lemmy_apub=error,lemmy_db_schema=error,lemmy_db_views=error,lemmy_db_views_actor=error,lemmy_db_views_moderator=error,lemmy_routes=error,lemmy_utils=error,lemmy_websocket=error"
+    volumes:
+      - ./lemmy.hjson:/config/config.hjson
+    depends_on:
+      - postgres
+      - pictrs
+
+  lemmy-ui:
+    image: dessalines/lemmy-ui:latest
+    container_name: lemmy_ui
+    environment:
+      - LEMMY_UI_LEMMY_INTERNAL_HOST=lemmy:8536
+      - LEMMY_UI_LEMMY_EXTERNAL_HOST=localhost:1234
+      - LEMMY_HTTPS=false
+      - LEMMY_UI_EXTRA_THEMES_FOLDER=/lemmy-ui/extra_themes
+    volumes:
+      - ./volumes/lemmy-ui:/lemmy-ui
+    depends_on:
+      - lemmy
+    restart: always
+
+  pictrs:
+    image: asonix/pictrs:0.4.0-rc.7
+    container_name: lemmy_pictrs
+    hostname: pictrs
+    environment:
+      - RUST_LOG=error
+      - PICTRS__MEDIA__VIDEO_CODEC=vp9
+      - PICTRS__MEDIA__GIF__MAX_WIDTH=256
+      - PICTRS__MEDIA__GIF__MAX_HEIGHT=256
+      - PICTRS__MEDIA__GIF__MAX_AREA=65536
+      - PICTRS__MEDIA__GIF__MAX_FRAME_COUNT=400
+    user: 991:991
+    volumes:
+      - ./volumes/pictrs:/mnt:Z
+    restart: always
+    deploy:
+      resources:
+        limits:
+          memory: 690m
+
+  postgres:
+    image: postgres:15-alpine
+    hostname: postgres
+    container_name: lemmy_postgres
+    environment:
+      - POSTGRES_USER=changeme
+      - POSTGRES_PASSWORD=changeme
+      - POSTGRES_DB=changeme
+    volumes:
+      - ./volumes/postgres:/var/lib/postgresql/data
+      - ./customPostgresql.conf:/etc/postgresql.conf
+    restart: always
+{% endhighlight %}
