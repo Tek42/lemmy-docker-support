@@ -16,7 +16,7 @@ This is done in different ways depending on which product you use for a reverse 
 
 It should be noted that the logging is reduced to only log on ERROR instead of the default setting with is WARN. You may want to change those back to WARN temporarily if you are having troubles and can't figure out what's going wrong. I also have made settings in my systems overall Docker logging to reduce log storage in general for ALL containers. This is done in /etc/docker/daemon.json if you want more information on how to do that I will be writing another article later.
 
-The lemmy.hjson referenced in this compose is obtained from the official GitHub of the Lemmy devs. [https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson](https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson){:target="_blank"}
+The lemmy.hjson referenced in this compose is obtained from the official GitHub of the Lemmy devs. [https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson](https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson){:target="_blank"} If you use theirs, be sure to either name it lemmy.hjson or change the filename in your docker-compose.yml to defaults.hjson.
 
 You will need to edit that file to your specific needs. Or you can look at an example [lemmy.hjson]({% post_url 2023-06-26-lemmy-hjson %}) file that I have provided
 

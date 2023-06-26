@@ -1,12 +1,12 @@
 ---
 layout: post
-title:  "Missing nginx.conf"
+title:  "nginx.conf"
 date:   2023-06-26 17:01:57 +0000
 categories: nginx
 ---
-Here's a copy of the missing nginx_internal.conf file.
+Here's a copy of the missing nginx_internal.conf file. You can use this is you opt to use the default docker-compose.yml provided by the Lemmy devs. I don't run mine that way, so I can't provide any support for this. If you want to know how I do it, [consult my guide]({% post_url 2023-06-26-better-docker-compose %}).
 
-This can also be found at [https://github.com/LemmyNet/lemmy/blob/main/docker/nginx.conf](https://github.com/LemmyNet/lemmy/blob/main/docker/nginx.conf){:target="_blank"}
+The provided file contents below can also be found at [https://github.com/LemmyNet/lemmy/blob/main/docker/nginx.conf](https://github.com/LemmyNet/lemmy/blob/main/docker/nginx.conf){:target="_blank"}
 
 {% highlight ruby %}
 worker_processes 1;
