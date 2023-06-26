@@ -12,9 +12,9 @@ This simplified compose removes the necessity to have separate networks and only
 
 It should be noted that the logging is reduced to only log on ERROR instead of the default setting with is WARN. You may want to change those back to WARN temporarily if you are having troubles and can't figure out what's going wrong. I also have made settings in my systems overall Docker logging to reduce log storage in general for ALL containers. This is done in /etc/docker/daemon.json if you want more information on how to do that I will be writing another article later.
 
-The lemmy.hjson referenced in this compose is obtained from the official GitHub of the Lemmy devs. [[https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson]]
+The lemmy.hjson referenced in this compose is obtained from the official GitHub of the Lemmy devs. [https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson]{https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson}
 
-You will need to edit that file to your specific needs. Or you can look at an example file that I have provided {{ site.baseurl }}{% link _posts/2023-06-26-lemmy-hjson.markdown %}
+You will need to edit that file to your specific needs. Or you can look at an example file that I have provided {% post_url 2023-06-26-lemmy-hjson.markdown %}
 
 {% highlight ruby %}
 version: "3.3"
