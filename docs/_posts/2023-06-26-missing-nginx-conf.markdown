@@ -6,7 +6,7 @@ categories: nginx
 ---
 Here's a copy of the missing nginx_internal.conf file.
 
-This can also be found at https://github.com/LemmyNet/lemmy/blob/main/docker/nginx.conf
+This can also be found at [https://github.com/LemmyNet/lemmy/blob/main/docker/nginx.conf]{https://github.com/LemmyNet/lemmy/blob/main/docker/nginx.conf}
 
 {% highlight ruby %}
 worker_processes 1;
