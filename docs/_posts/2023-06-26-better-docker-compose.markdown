@@ -20,7 +20,7 @@ I also have made settings in my systems overall Docker logging to reduce log sto
 
 The lemmy.hjson referenced in this compose can be obtained from the official GitHub of the Lemmy devs. [https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson](https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson){:target="_blank"} If you use theirs, be sure to either name it lemmy.hjson or change the filename in your docker-compose.yml to defaults.hjson.
 
-If you use the file provided by the Lemmy devs you will need to edit that file to your specific needs. Alternately you can refer to the example [lemmy.hjson]({% post_url 2023-06-26-lemmy-hjson %}) file that I have provided and is known to work with my examples.
+If you use the file provided by the Lemmy devs you will need to edit that file to your specific needs. Alternately you can refer to the example [lemmy.hjson]({% post_url 2023-06-26-lemmy-hjson %}) file that I have provided and is known to work with my examples. You will still need to change some things, but it is a little more straight forward.
 
 You may want to edit/change the pict-rs settings to better suit your needs. That is outside the scope of this document.
 
