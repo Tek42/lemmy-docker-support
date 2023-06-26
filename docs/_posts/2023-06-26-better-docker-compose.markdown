@@ -4,13 +4,17 @@ title:  "Better docker compose"
 date:   2023-06-26 17:01:57 +0000
 categories: docker
 ---
-I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your own reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmmy install.
+I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your own reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmy install with easy automation of SSL certs.
 
 If you want to use something other than NPM (Caddy, Traefik, Nginx, etc) you can just omit the section for 'nginxproxymanager' and insert your own reverse proxy preference.
 
 This simplified compose removes the necessity to have separate networks and only requires you to expose the port(s) of your reverse proxy of choice. All other network communication between containers in this compose is done internally on the default network that is automaticall created when you do 'docker compose up -d'.
 
 It should be noted that the logging is reduced to only log on ERROR instead of the default setting with is WARN. You may want to change those back to WARN temporarily if you are having troubles and can't figure out what's going wrong. I also have made settings in my systems overall Docker logging to reduce log storage in general for ALL containers. This is done in /etc/docker/daemon.json if you want more information on how to do that I will be writing another article later.
+
+The lemmy.hjson referenced in this compose is obtained from the official GitHub of the Lemmy devs. https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson
+
+You will need to edit that file to your specific needs. Or you can look at an example file that I have provided https://docker-support.tet42.org/lemmy/2023/06/26/lemmy-hjson.html
 
 {% highlight ruby %}
 version: "3.3"
