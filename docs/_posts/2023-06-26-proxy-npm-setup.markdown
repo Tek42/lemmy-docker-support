@@ -7,7 +7,7 @@ categories: proxy
 
 All settings assume you already have ports 80 and 443 open on your server.
 
-Details tab
+Details tab. Enter your desired instance hostname and hit enter. Then fill in the remaining fields as shown.
 
 ![NPM details page](/assets/details.png)
 
@@ -15,11 +15,11 @@ Custom locations tab, you will want to add entries for /api (as shown) but also 
 
 ![NPM custom locations tab](/assets/custom_locations.png)
 
-SSL tab, select these options and fill in your email address then click save. It should request a Letsencrypt cert for you and apply it to your site.
+SSL tab, select these options and fill in your email address agree then click save. It will automatically request a Letsencrypt cert for you and apply it to your site.
 
 ![NPM SSL tab](/assets/ssl.png)
 
-Advamced tab
+Advanced tab
 
 ![NPM Advanced tab](/assets/advanced.png)
 
