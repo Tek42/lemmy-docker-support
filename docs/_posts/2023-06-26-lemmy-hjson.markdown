@@ -7,6 +7,7 @@ categories: lemmy
 Here is an example lemmy.hjson that you can use in your Lemmy deployment.
 
 {% highlight ruby %}
+{
   # for more info about the config, check out the documentation
   # https://join-lemmy.org/docs/en/administration/configuration.html
   # only few config options are covered in this example config
@@ -49,6 +50,7 @@ Here is an example lemmy.hjson that you can use in your Lemmy deployment.
     # maximum number of active sql connections
     pool_size: 5
   }
+  
  # Email sending configuration. All options except login/password are mandatory
   email: {
     # Hostname and port of the smtp server
