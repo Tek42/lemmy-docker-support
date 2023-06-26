@@ -20,6 +20,10 @@ The lemmy.hjson referenced in this compose can be obtained from the official Git
 
 If you use the file provided by the Lemmy devs you will need to edit that file to your specific needs. Alternately you can refer to the example [lemmy.hjson]({% post_url 2023-06-26-lemmy-hjson %}) file that I have provided and is known to work with my examples.
 
+
+!!!! PLEASE NOTE THAT I AM PULLING LEMMY VERSION 0.18 IN THIS EXAMPLE COMPOSE (dessalines/lemmy:0.18 and dessalines/lemmy-ui:0.18) AS WELL AS PICTRS 0.4.0-rc.7 (asonix/pictrs:0.4.0-rc.7), YOU WILL WANT TO CHANGE THOSE TO WHATEVER VERSION YOU INTEND TO RUN FOR YOUR INSTANCE. IF LEMMY IS UPGRADED IN THE FUTURE YOU WILL NEED TO GO BACK TO YOUR COMPOSE AND INCREMENT THE VERSION TO MATCH THE VERSION TAG IN DOCKERHUB. VERSION TAGS CAN BE VIEWED ON THE [LEMMY DOCKERHUB PAGE](https://hub.docker.com/r/dessalines/lemmy/tags){:target="_blank"}. PICTRS CAN BE UPGRADED AT YOUR DISCRETION [PICTRS DOCKERHUB PAGE](https://hub.docker.com/r/asonix/pictrs/tags){:target="_blank"} !!!!
+
+
 {% highlight ruby %}
 version: "3.3"
 services:
@@ -37,7 +41,7 @@ services:
      - ./nginxproxymanager/logs:/data/logs
 
   lemmy:
-    image: dessalines/lemmy:latest
+    image: dessalines/lemmy:0.18
     container_name: lemmy
     hostname: lemmy
     restart: always
@@ -50,7 +54,7 @@ services:
       - pictrs
 
   lemmy-ui:
-    image: dessalines/lemmy-ui:latest
+    image: dessalines/lemmy-ui:0.18
     container_name: lemmy_ui
     environment:
       - LEMMY_UI_LEMMY_INTERNAL_HOST=lemmy:8536
