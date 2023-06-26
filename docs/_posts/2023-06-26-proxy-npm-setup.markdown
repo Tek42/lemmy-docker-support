@@ -8,6 +8,7 @@ categories: proxy
 All settings assume you already have ports 80 and 443 open on your server.
 
 Details tab
+
 ![NPM details page](/assets/details.png)
 
 Custom locations tab, you will want to add entries for /api (as shown) but also add additional entries for /.well-known, /pictrs, and /feeds. All should point to the same hostname and port (lemmy:8536)
@@ -19,6 +20,7 @@ SSL tab, select these options and fill in your email address then click save. It
 ![NPM SSL tab](/assets/ssl.png)
 
 Advamced tab
+
 ![NPM Advanced tab](/assets/advanced.png)
 
 In the Advanced tab, paste this in and save.
