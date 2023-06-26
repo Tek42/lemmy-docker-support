@@ -4,7 +4,7 @@ title:  "streamlined docker compose"
 date:   2023-06-26 17:01:57 +0000
 categories: docker
 ---
-I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your own reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmy install with easy automation of SSL certs. 
+I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your choice of reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmy install with easy automation of SSL certs. 
 
 Please note that I have intentionally removed postfix from the docker-compose.yml as I believe that it's a bad idea for people to run postfix on home servers and/or VPS's. You will almost certainly have most/all of your outgoing mail rejected by recipient servers. I recommend using one of the many mail services such as sendgrid, mailgun, postmark, etc. If you feel differently, feel free to do it your way.
 
