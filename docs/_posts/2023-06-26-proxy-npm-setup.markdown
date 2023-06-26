@@ -7,7 +7,7 @@ categories: proxy
 
 All settings assume you already have ports 80 and 443 open on your server.
 
-Details tab. Enter your desired instance hostname and hit enter. Then fill in the remaining fields as shown.
+Details tab. Enter your desired instance hostname and hit enter. Then fill in the remaining fields as shown. If you are running any version of Lemmy belov 0.18 you will also need to enable "Websockets Support".
 
 ![NPM details page](/assets/details.png)
 
