@@ -2,7 +2,7 @@
 layout: post
 title:  "streamlined docker compose"
 date:   2023-06-26 17:01:57 +0000
-categories: docker
+categories: docker lemmy
 ---
 I find the docker compose provided by the Lemmy devs to be overly complicated. I have pared it down to the essentials to get it running nicely with your choice of reverse proxy. In this example I use Nginx Proxy Manager (NPM) which is very simple to use and I recommend it to anyone who just wants a simple Lemmy install with easy automation of SSL certs. 
 
