@@ -85,6 +85,5 @@ services:
       - POSTGRES_DB=changeme
     volumes:
       - ./volumes/postgres:/var/lib/postgresql/data
-      - ./customPostgresql.conf:/etc/postgresql.conf
     restart: always
 {% endhighlight %}
