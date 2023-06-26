@@ -20,6 +20,7 @@ The lemmy.hjson referenced in this compose can be obtained from the official Git
 
 If you use the file provided by the Lemmy devs you will need to edit that file to your specific needs. Alternately you can refer to the example [lemmy.hjson]({% post_url 2023-06-26-lemmy-hjson %}) file that I have provided and is known to work with my examples.
 
+You may want to edit/change the pict-rs settings to better suit your needs. That is outside the scope of this document.
 
 !!!! Please note that I am pulling Lemmy version 0.18 (dessalines/lemmy:0.18 and dessalines/lemmy-ui:0.18) and pict-rs 0.4.0-rc.7 (asonix/pictrs:0.4.0-rc.7) in this example docker-compose.yml. You may want to change those version tags to whatever version you intend to run for your instance. When Lemmy is upgraded in the future you will need to shut down your stack (docker compose down), edit your docker-compose.yml and increment the version to match the version tag to match the newer version you want to run. Version tags can be viewed on the [LEMMY DOCKERHUB PAGE](https://hub.docker.com/r/dessalines/lemmy/tags){:target="_blank"}. pict-rs can also be upgraded at your discretion, their version tags can be viewed on the [PICT-RS DOCKERHUB PAGE](https://hub.docker.com/r/asonix/pictrs/tags){:target="_blank"} !!!!
 
