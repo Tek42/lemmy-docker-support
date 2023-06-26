@@ -14,7 +14,7 @@ It should be noted that the logging is reduced to only log on ERROR instead of t
 
 The lemmy.hjson referenced in this compose is obtained from the official GitHub of the Lemmy devs. [[https://github.com/LemmyNet/lemmy/blob/main/config/defaults.hjson]]
 
-You will need to edit that file to your specific needs. Or you can look at an example file that I have provided {% link _posts/2023-06-26-lemmy-hjson.markdown %}
+You will need to edit that file to your specific needs. Or you can look at an example file that I have provided {{ site.baseurl }}{% link _posts/2023-06-26-lemmy-hjson.markdown %}
 
 {% highlight ruby %}
 version: "3.3"
