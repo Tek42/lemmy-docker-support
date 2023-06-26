@@ -63,4 +63,4 @@ Here is an example lemmy.hjson that you can use in your Lemmy deployment.
     tls_type: "starttls"
   }
 }
-{% endhighlight %}{
+{% endhighlight %}
